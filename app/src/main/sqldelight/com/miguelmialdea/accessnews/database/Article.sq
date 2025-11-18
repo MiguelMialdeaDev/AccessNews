@@ -1,0 +1,95 @@
+-- Table for storing articles
+CREATE TABLE ArticleEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    feedId TEXT NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    content TEXT NOT NULL,
+    url TEXT NOT NULL UNIQUE,
+    imageUrl TEXT,
+    author TEXT,
+    publishedAt INTEGER NOT NULL,
+    isBookmarked INTEGER NOT NULL DEFAULT 0,
+    isRead INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (feedId) REFERENCES FeedEntity(id) ON DELETE CASCADE
+);
+
+-- Create index for faster queries
+CREATE INDEX article_feed_id_index ON ArticleEntity(feedId);
+CREATE INDEX article_published_at_index ON ArticleEntity(publishedAt);
+CREATE INDEX article_is_bookmarked_index ON ArticleEntity(isBookmarked);
+
+-- Get all articles from all feeds
+getAllArticles:
+SELECT *
+FROM ArticleEntity
+ORDER BY publishedAt DESC;
+
+-- Get articles by feed
+getArticlesByFeed:
+SELECT *
+FROM ArticleEntity
+WHERE feedId = ?
+ORDER BY publishedAt DESC;
+
+-- Get bookmarked articles
+getBookmarkedArticles:
+SELECT *
+FROM ArticleEntity
+WHERE isBookmarked = 1
+ORDER BY publishedAt DESC;
+
+-- Get article by ID
+getArticleById:
+SELECT *
+FROM ArticleEntity
+WHERE id = ?;
+
+-- Get article by URL
+getArticleByUrl:
+SELECT *
+FROM ArticleEntity
+WHERE url = ?;
+
+-- Insert or replace article
+insertOrReplaceArticle:
+INSERT OR REPLACE INTO ArticleEntity(id, feedId, title, description, content, url, imageUrl, author, publishedAt, isBookmarked, isRead)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- Toggle bookmark
+toggleBookmark:
+UPDATE ArticleEntity
+SET isBookmarked = CASE
+    WHEN isBookmarked = 1 THEN 0
+    ELSE 1
+END
+WHERE id = ?;
+
+-- Mark as read
+markAsRead:
+UPDATE ArticleEntity
+SET isRead = ?
+WHERE id = ?;
+
+-- Delete article
+deleteArticle:
+DELETE FROM ArticleEntity
+WHERE id = ?;
+
+-- Delete articles by feed
+deleteArticlesByFeed:
+DELETE FROM ArticleEntity
+WHERE feedId = ?;
+
+-- Search articles
+searchArticles:
+SELECT *
+FROM ArticleEntity
+WHERE title LIKE '%' || ? || '%' OR description LIKE '%' || ? || '%' OR content LIKE '%' || ? || '%'
+ORDER BY publishedAt DESC;
+
+-- Get unread articles count
+getUnreadCount:
+SELECT COUNT(*)
+FROM ArticleEntity
+WHERE isRead = 0;

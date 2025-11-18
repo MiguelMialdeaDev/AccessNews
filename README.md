@@ -2,54 +2,95 @@
 
 A modern, accessibility-first Android news reader application built with cutting-edge technologies and following best practices.
 
-![Android](https://img.shields.io/badge/Platform-Android-green.svg)
-![Kotlin](https://img.shields.io/badge/Language-Kotlin-blue.svg)
-![MinSDK](https://img.shields.io/badge/MinSDK-24-orange.svg)
-![Architecture](https://img.shields.io/badge/Architecture-MVI-purple.svg)
+---
+
+## Overview
+
+AccessNews is a professional Android application that demonstrates modern Android development practices with a strong focus on accessibility and inclusive design. Built entirely with Kotlin and Jetpack Compose, it showcases advanced architectural patterns and state-of-the-art Android development tools.
+
+**Platform:** Android
+**Language:** Kotlin 100%
+**Min SDK:** 24 (Android 7.0)
+**Target SDK:** 36
+**Architecture:** MVI + Clean Architecture
+
+---
 
 ## Key Highlights
 
-**Accessibility-First Design** - Built from the ground up with accessibility as a core feature, not an afterthought
-**Modern Stack** - Koin, Ktor, SQLDelight, Jetpack Compose
-**MVI Architecture** - Predictable state management with unidirectional data flow
-**Comprehensive Testing** - Unit tests with Kotest, MockK, and Turbine
-**Clean Architecture** - Clear separation of concerns across layers
+**Accessibility-First Design**
+Built from the ground up with accessibility as a core feature, not an afterthought
+
+**Modern Stack**
+Koin, Ktor, SQLDelight, Jetpack Compose
+
+**MVI Architecture**
+Predictable state management with unidirectional data flow
+
+**Comprehensive Testing**
+Unit tests with Kotest, MockK, and Turbine
+
+**Clean Architecture**
+Clear separation of concerns across layers
+
+---
 
 ## Features
 
 ### Core Functionality
-- 📰 **RSS/Atom Feed Reader** - Support for multiple feed formats
-- 🔖 **Bookmarks** - Save articles for later reading
-- 📱 **Offline Reading** - Local caching with SQLDelight
-- 🔍 **Search** - Find articles and feeds quickly
-- 📊 **Multiple Categories** - Organize feeds by topic
+
+**RSS/Atom Feed Reader**
+Support for multiple feed formats
+
+**Bookmarks**
+Save articles for later reading
+
+**Offline Reading**
+Local caching with SQLDelight
+
+**Search**
+Find articles and feeds quickly
+
+**Multiple Categories**
+Organize feeds by topic
 
 ### Accessibility Features (WCAG 2.1 Level AA Compliant)
-- **Visual Accessibility**
-  - Full TalkBack/screen reader support
-  - High contrast themes
-  - Dynamic text scaling (80% - 200%)
-  - Semantic labels and descriptions
 
-- **Motor Accessibility**
-  - Minimum 48dp touch targets
-  - Keyboard navigation support
-  - Switch Access compatible
-  - Gesture alternatives
+**Visual Accessibility**
+- Full TalkBack and screen reader support
+- High contrast themes for better visibility
+- Dynamic text scaling from 80% to 200%
+- Semantic labels and descriptions for all UI elements
 
-- **Cognitive Accessibility**
-  - Simple, clear navigation
-  - Distraction-free reading mode
-  - Consistent UI patterns
-  - Clear focus indicators
+**Motor Accessibility**
+- Minimum 48dp touch targets on all interactive elements
+- Full keyboard navigation support
+- Switch Access compatible
+- Alternative input methods support
+
+**Cognitive Accessibility**
+- Simple and clear navigation patterns
+- Distraction-free reading mode
+- Consistent UI patterns throughout the app
+- Clear focus indicators for navigation
+
+---
 
 ## Tech Stack
 
 ### Architecture & Patterns
-- **MVI (Model-View-Intent)** - Unidirectional data flow
-- **Clean Architecture** - Domain, Data, Presentation layers
-- **Repository Pattern** - Abstract data sources
-- **Use Cases** - Encapsulated business logic
+
+**MVI (Model-View-Intent)**
+Unidirectional data flow
+
+**Clean Architecture**
+Domain, Data, Presentation layers
+
+**Repository Pattern**
+Abstract data sources
+
+**Use Cases**
+Encapsulated business logic
 
 ### Core Technologies
 
@@ -75,6 +116,8 @@ A modern, accessibility-first Android news reader application built with cutting
 | **DI Testing** | Koin Test |
 | **UI Testing** | Compose Test |
 | **Coroutines** | Coroutines Test |
+
+---
 
 ## Project Structure
 
@@ -124,6 +167,8 @@ app/
     └── AppModule.kt
 ```
 
+---
+
 ## Architecture
 
 ### Clean Architecture Layers
@@ -153,26 +198,31 @@ User Action → Intent → ViewModel → State Update → UI Render
            Side Effect → One-time Event
 ```
 
+---
+
 ## Getting Started
 
 ### Prerequisites
-- Android Studio Hedgehog | 2023.1.1 or higher
-- JDK 11 or higher
-- Android SDK API 24+
+
+Android Studio Hedgehog | 2023.1.1 or higher
+
+JDK 11 or higher
+
+Android SDK API 24+
 
 ### Installation
 
-1. Clone the repository
+**1. Clone the repository**
 ```bash
 git clone https://github.com/miguelmialdea/accessnews.git
 cd accessnews
 ```
 
-2. Open in Android Studio
+**2. Open in Android Studio**
 
-3. Sync Gradle files
+**3. Sync Gradle files**
 
-4. Run the app
+**4. Run the app**
 
 ### Build Commands
 
@@ -190,6 +240,8 @@ gradlew test
 gradlew connectedAndroidTest
 ```
 
+---
+
 ## Key Differences from ShopFlow
 
 | Aspect | ShopFlow | AccessNews |
@@ -201,9 +253,12 @@ gradlew connectedAndroidTest
 | **Focus** | E-commerce | **Accessibility** |
 | **Testing** | JUnit + Mockito | **Kotest + MockK + Turbine** |
 
+---
+
 ## Accessibility Implementation
 
 ### Semantic Descriptions
+
 ```kotlin
 Text(
     text = article.title,
@@ -215,17 +270,23 @@ Text(
 ```
 
 ### Touch Target Sizes
+
 All interactive elements have a minimum size of 48dp × 48dp.
 
 ### Dynamic Text Scaling
+
 Supports system font scaling up to 200%.
 
 ### Screen Reader Support
+
 Full TalkBack compatibility with custom content descriptions and navigation order.
+
+---
 
 ## Testing
 
 ### Unit Tests
+
 ```bash
 # Run all unit tests
 gradlew test
@@ -235,6 +296,7 @@ gradlew test --tests "FeedViewModelTest"
 ```
 
 ### Example Test with Kotest
+
 ```kotlin
 class FeedRepositoryTest : StringSpec({
     "should return subscribed feeds" {
@@ -250,51 +312,91 @@ class FeedRepositoryTest : StringSpec({
 })
 ```
 
+---
+
 ## Performance Optimizations
 
-- **LazyColumn** for efficient scrolling
-- **SQLDelight** for optimized database queries
-- **Coroutines** for non-blocking operations
-- **Flow** for reactive data streams
-- **Coil** for image caching and loading
+**LazyColumn** for efficient scrolling
 
-## Roadmap
+**SQLDelight** for optimized database queries
 
-- [ ] User authentication
-- [ ] Feed discovery
-- [ ] Article sharing
-- [ ] Reading statistics
-- [ ] Widget support
-- [ ] Podcast support
-- [ ] Dark mode
-- [ ] Multiple languages
-- [ ] Export/Import feeds (OPML)
-- [ ] Sync across devices
+**Coroutines** for non-blocking operations
 
-## Contributing
+**Flow** for reactive data streams
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+**Coil** for image caching and loading
+
+---
+
+## Future Enhancements
+
+The following features are planned for future releases:
+
+- User authentication and personalization
+- Feed discovery and recommendations
+- Article sharing capabilities
+- Reading statistics and analytics
+- Home screen widget support
+- Podcast feed support
+- Enhanced dark mode theming
+- Multiple language support
+- OPML import/export functionality
+- Cross-device synchronization
+
+---
+
+## Development
+
+### Building the Project
+
+```bash
+# Clone the repository
+git clone https://github.com/MiguelMialdeaDev/AccessNews.git
+cd AccessNews
+
+# Build debug APK
+./gradlew assembleDebug
+
+# Run tests
+./gradlew test
+
+# Run instrumented tests
+./gradlew connectedAndroidTest
+```
+
+### Project Requirements
+
+Android Studio Hedgehog (2023.1.1) or higher
+
+JDK 11 or higher
+
+Android SDK 36
+
+Gradle 8.0+
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
 
 ## Author
 
 **Miguel Ángel Mialdea**
-- Android Developer | 5+ years experience
-- Specialized in Kotlin, Jetpack Compose, Accessibility
-- Passionate about inclusive design
 
-## Acknowledgments
-
-- Material Design team for accessibility guidelines
-- Koin community for excellent DI framework
-- SQLDelight team for type-safe SQL
-- Ktor team for modern networking
+Android Developer with 5+ years of experience specializing in Kotlin, Jetpack Compose, and accessibility-focused application development. Experienced in banking and FinTech solutions with Openbank/Santander Group.
 
 ---
 
-**Built with ❤️ for everyone, accessible to all**
-#   A c c e s s N e w s  
- 
+## Acknowledgments
+
+This project was built using excellent open-source tools and libraries:
+
+- Android Jetpack and Compose teams for the modern UI toolkit
+- Material Design team for accessibility guidelines and components
+- Koin community for the lightweight dependency injection framework
+- SQLDelight team for type-safe SQL database access
+- Ktor team for the modern HTTP client
+- The Android developer community for continuous support and resources
